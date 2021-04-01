@@ -499,9 +499,9 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
     
     roccPlot = fleetAll['output']['rocc'][:elapsedYear+1]
     ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['rocc'][:elapsedYear+1])
-    ax[1,1].set_title("$\r_{occ}$")
+    ax[1,1].set_title("r_occ")
     ax[1,1].set_xlabel('Year')
-    ax[1,1].set_ylabel('$\r_{occ}$')
+    ax[1,1].set_ylabel('r_occ')
     ax[1,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax[1,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
                 #if i == 1:
