@@ -498,7 +498,7 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
     ax[1,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax[1,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
     
-    roccPlot = fleetAll['output']['ctaPerRocc'][:elapsedYear+1]
+    ctaPerRoccPlot = fleetAll['output']['ctaPerRocc'][:elapsedYear+1]
     ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['ctaPerRocc'][:elapsedYear+1])
     ax[1,1].set_title("ctaPerRocc")
     ax[1,1].set_xlabel('Year')
