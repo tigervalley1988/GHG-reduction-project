@@ -279,6 +279,7 @@ def yearlyOperationFunc(fleetAll,startYear,elapsedYear,NShipFleet,Alpha,tOpSch,v
             #fleetAll['output']['gTilde'][elapsedYear] += NShipFleet * fleetAll[i]['gTilde'][tOpTemp]
             fleetAll['output']['g'][elapsedYear] += NShipFleet * fleetAll[i]['g'][tOpTemp]
             fleetAll['output']['cta'][elapsedYear] += NShipFleet * fleetAll[i]['cta'][tOpTemp]
+            fleetAll['output']['rocc'][elapsedYear] = fleetAll[i]['rocc'][tOpTemp]
             fleetAll['output']['dcostShippingTilde'][elapsedYear] += NShipFleet * fleetAll[i]['dcostShippingTilde'][tOpTemp]
             numFleetAlive += 1
     
@@ -497,7 +498,8 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
     ax[0,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
 
     dcostShippingTildePlot = fleetAll['output']['dcostShippingTilde'][:elapsedYear+1]
-    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['dcostShippingTilde'][:elapsedYear+1])
+    #ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['dcostShippingTilde'][:elapsedYear+1])
+    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['rocc'][:elapsedYear+1])
     ax[1,1].set_title("$\Delta C_{shipping} \ / \ cta$")
     ax[1,1].set_xlabel('Year')
     ax[1,1].set_ylabel('\$ / (TEU $\cdot$ NM)')
