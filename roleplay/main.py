@@ -13,7 +13,7 @@ def roleplayRun(decisionListName):
     tOpSch = 20
     startYear = 2020
     lastYear = 2021
-    NShipFleet = 6
+    NShipFleet = 1
     Alpha = 1
     tbid = 2
 
