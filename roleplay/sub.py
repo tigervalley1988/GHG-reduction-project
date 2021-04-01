@@ -498,6 +498,14 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
     ax[1,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax[1,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
     
+    roccPlot = fleetAll['output']['ctaPerRocc'][:elapsedYear+1]
+    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['ctaPerRocc'][:elapsedYear+1])
+    ax[1,1].set_title("ctaPerRocc")
+    ax[1,1].set_xlabel('Year')
+    ax[1,1].set_ylabel('ctaPerRocc')
+    ax[1,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax[1,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
+    
     SPlot = fleetAll['S'][:elapsedYear+1]
     ax[2,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['S'][:elapsedYear+1])
     ax[2,0].set_title(r"$ ( \Delta C_{shipping} - \alpha g) \ / \ cta$")
