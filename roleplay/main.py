@@ -42,6 +42,7 @@ def roleplayRun(decisionListName):
     fleets.setdefault('output',{})
     fleets['output']['g'] = np.zeros(lastYear-startYear+1)
     fleets['output']['cta'] = np.zeros(lastYear-startYear+1)
+    fleets['output']['rocc'] = np.zeros(lastYear-startYear+1)
     fleets['output']['gTilde'] = np.zeros(lastYear-startYear+1)
     fleets['output']['dcostShippingTilde'] = np.zeros(lastYear-startYear+1)
     initialFleets = rs.initialFleetFunc(parameterFile6)
