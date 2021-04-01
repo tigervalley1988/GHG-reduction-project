@@ -470,54 +470,48 @@ def outputGUIFunc(fleetAll,startYear,elapsedYear,tOpSch):
     mainloop()
 
 def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
-    fig, ax = plt.subplots(2, 2, figsize=(10.0, 10.0))
+    fig, ax = plt.subplots(3, 2, figsize=(10.0, 10.0))
     plt.subplots_adjust(wspace=0.4, hspace=0.6)
 
-    gTildePlot = fleetAll['output']['gTilde'][:elapsedYear+1]*1000000
-    ax[1,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['gTilde'][:elapsedYear+1]*1000000)
-    ax[1,0].set_title("g / cta")
-    ax[1,0].set_xlabel('Year')
-    ax[1,0].set_ylabel('g / (TEU $\cdot$ NM)')
-    #ax[1,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
-    ax[1,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
-
     gPlot = fleetAll['output']['g'][:elapsedYear+1]/1000000
-    ax[0,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['g'][:elapsedYear+1]/1000000)
-    ax[0,1].set_title("g")
-    ax[0,1].set_xlabel('Year')
-    ax[0,1].set_ylabel('Millions ton')
-    ax[0,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
-    ax[0,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
-
-    dcostShippingTildePlot = fleetAll['output']['dcostShippingTilde'][:elapsedYear+1]
-    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['dcostShippingTilde'][:elapsedYear+1])
-    ax[1,1].set_title("$\Delta C_{shipping} \ / \ cta$")
-    ax[1,1].set_xlabel('Year')
-    ax[1,1].set_ylabel('\$ / (TEU $\cdot$ NM)')
-    ax[1,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
-    ax[1,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
-    
-    roccPlot = fleetAll['output']['rocc'][:elapsedYear+1]
-    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['rocc'][:elapsedYear+1])
-    ax[1,1].set_title("r_occ")
-    ax[1,1].set_xlabel('Year')
-    ax[1,1].set_ylabel('r_occ')
-    ax[1,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
-    ax[1,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
-                #if i == 1:
-                #    ax2.bar(fleetAll['year'][:elapsedYear+1], simu)
-                #else:
-                #    ax2.bar(fleetAll['year'][:elapsedYear+1], simu, bottom=simuSum)
-    
-    #fig.tight_layout()
-    
-    SPlot = fleetAll['S'][:elapsedYear+1]
-    ax[0,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['S'][:elapsedYear+1])
-    ax[0,0].set_title(r"$ ( \Delta C_{shipping} - \alpha g) \ / \ cta$")
+    ax[0,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['g'][:elapsedYear+1]/1000000)
+    ax[0,0].set_title("g")
     ax[0,0].set_xlabel('Year')
+    ax[0,0].set_ylabel('Millions ton')
     ax[0,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax[0,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
+
+    gTildePlot = fleetAll['output']['gTilde'][:elapsedYear+1]*1000000
+    ax[0,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['gTilde'][:elapsedYear+1]*1000000)
+    ax[0,1].set_title("g / cta")
+    ax[0,1].set_xlabel('Year')
+    ax[0,1].set_ylabel('g / (TEU $\cdot$ NM)')
+    #ax[0,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax[0,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
+
+    roccPlot = fleetAll['output']['rocc'][:elapsedYear+1]
+    ax[1,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['rocc'][:elapsedYear+1])
+    ax[1,0].set_title("r_occ")
+    ax[1,0].set_xlabel('Year')
+    ax[1,0].set_ylabel('r_occ')
+    ax[1,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax[1,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
+    
+    SPlot = fleetAll['S'][:elapsedYear+1]
+    ax[2,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['S'][:elapsedYear+1])
+    ax[2,0].set_title(r"$ ( \Delta C_{shipping} - \alpha g) \ / \ cta$")
+    ax[2,0].set_xlabel('Year')
+    ax[2,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax[2,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
     #ax[0].set_ylabel('Year')
+    
+    dcostShippingTildePlot = fleetAll['output']['dcostShippingTilde'][:elapsedYear+1]
+    ax[2,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['dcostShippingTilde'][:elapsedYear+1])
+    ax[2,1].set_title("$\Delta C_{shipping} \ / \ cta$")
+    ax[2,1].set_xlabel('Year')
+    ax[2,1].set_ylabel('\$ / (TEU $\cdot$ NM)')
+    ax[2,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax[2,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
     
     if os.name == 'nt':
         plt.show()
