@@ -473,14 +473,6 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
     fig, ax = plt.subplots(2, 2, figsize=(10.0, 10.0))
     plt.subplots_adjust(wspace=0.4, hspace=0.6)
 
-    SPlot = fleetAll['S'][:elapsedYear+1]
-    ax[0,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['S'][:elapsedYear+1])
-    ax[0,0].set_title(r"$ ( \Delta C_{shipping} - \alpha g) \ / \ cta$")
-    ax[0,0].set_xlabel('Year')
-    ax[0,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
-    ax[0,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
-    #ax[0].set_ylabel('Year')
-
     gTildePlot = fleetAll['output']['gTilde'][:elapsedYear+1]*1000000
     ax[1,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['gTilde'][:elapsedYear+1]*1000000)
     ax[1,0].set_title("g / cta")
@@ -498,11 +490,18 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
     ax[0,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
 
     dcostShippingTildePlot = fleetAll['output']['dcostShippingTilde'][:elapsedYear+1]
-    #ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['dcostShippingTilde'][:elapsedYear+1])
-    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['rocc'][:elapsedYear+1])
+    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['dcostShippingTilde'][:elapsedYear+1])
     ax[1,1].set_title("$\Delta C_{shipping} \ / \ cta$")
     ax[1,1].set_xlabel('Year')
     ax[1,1].set_ylabel('\$ / (TEU $\cdot$ NM)')
+    ax[1,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax[1,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
+    
+    roccPlot = fleetAll['output']['rocc'][:elapsedYear+1]
+    ax[1,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['rocc'][:elapsedYear+1])
+    ax[1,1].set_title("$\r_{occ}$")
+    ax[1,1].set_xlabel('Year')
+    ax[1,1].set_ylabel('$\r_{occ}$')
     ax[1,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax[1,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
                 #if i == 1:
@@ -511,6 +510,14 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
                 #    ax2.bar(fleetAll['year'][:elapsedYear+1], simu, bottom=simuSum)
     
     #fig.tight_layout()
+    
+    SPlot = fleetAll['S'][:elapsedYear+1]
+    ax[0,0].plot(fleetAll['year'][:elapsedYear+1],fleetAll['S'][:elapsedYear+1])
+    ax[0,0].set_title(r"$ ( \Delta C_{shipping} - \alpha g) \ / \ cta$")
+    ax[0,0].set_xlabel('Year')
+    ax[0,0].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax[0,0].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
+    #ax[0].set_ylabel('Year')
     
     if os.name == 'nt':
         plt.show()
