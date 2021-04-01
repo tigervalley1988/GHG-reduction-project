@@ -12,7 +12,7 @@ import os
 def roleplayRun(decisionListName):
     tOpSch = 20
     startYear = 2020
-    lastYear = 2021
+    lastYear = 2050
     NShipFleet = 6
     Alpha = 1
     tbid = 2
