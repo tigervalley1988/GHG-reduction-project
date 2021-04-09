@@ -184,7 +184,8 @@ def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSP
     costShipBasicHFO = kShipBasic1 * CAPcnt + kShipBasic2
     costShipBasic = rShipBasic * costShipBasicHFO
     costShipAll = (1+dcostWPS+dcostSPS+dcostCCS) * costShipBasic
-    print('costShipBasicHFO: ', costShipBasicHFO, ', costShipBasic: ', costShipBasic, ', costShipAll: ', costShipAll)
+    #print('costShipBasicHFO: ', costShipBasicHFO, ', costShipBasic: ', costShipBasic, ', costShipAll: ', costShipAll)
+    print('dcostWPS: ', dcostWPS, ', dcostSPS: ', dcostSPS, ', dcostCCS: ', dcostCCS)
     return costShipBasicHFO, costShipBasic, costShipAll
 
 def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBasicHFO):
