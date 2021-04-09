@@ -285,7 +285,7 @@ def yearlyOperationFunc(fleetAll,startYear,elapsedYear,NShipFleet,Alpha,tOpSch,v
             fleetAll['output']['dcostShippingTilde'][elapsedYear] += NShipFleet * fleetAll[i]['dcostShippingTilde'][tOpTemp]
             numFleetAlive += 1
     
-    fleetAll['output']['rocc'][elapsedYear] = fleetAll[0]['rocc'][tOpTemp]
+    fleetAll['output']['rocc'][elapsedYear] = fleetAll[1]['rocc'][tOpTemp]
     fleetAll['output']['gTilde'][elapsedYear] = fleetAll['output']['g'][elapsedYear] / fleetAll['output']['cta'][elapsedYear]
     
     Si = 0
