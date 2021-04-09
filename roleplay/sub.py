@@ -184,15 +184,16 @@ def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSP
     costShipBasicHFO = kShipBasic1 * CAPcnt + kShipBasic2
     costShipBasic = rShipBasic * costShipBasicHFO
     costShipAll = (1+dcostWPS+dcostSPS+dcostCCS) * costShipBasic
+    print('costShipBasicHFO: ', costShipBasicHFO, ', costShipBasic: ', costShipBasic, ', costShipAll: ', costShipAll)
     return costShipBasicHFO, costShipBasic, costShipAll
 
 def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBasicHFO):
     if tOp <= tOpSch:
         dcostShipping = dcostFuelAll + (costShipAll-costShipBasicHFO)/tOpSch
-        print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
+        #print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
     else:
         dcostShipping = dcostFuelAll
-        print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
+        #print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
     return dcostShipping
 
 def demandScenarioFunc(year,kDem1,kDem2,kDem3,kDem4):
