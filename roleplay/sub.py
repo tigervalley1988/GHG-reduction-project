@@ -163,7 +163,7 @@ def ctaFunc(CAPcnt,rocc,d):
 def costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fShipORG, fShip):
     costFuelShipORG = unitCostFuelHFO*fShipORG
     costFuelShip = unitCostFuel*fShip
-    #print('costFuelShipOrg: ', costFuelShipORG, ', costFuelShip: ', costFuelShip)
+    print('costFuelShipOrg: ', costFuelShipORG, ', costFuelShip: ', costFuelShip)
     dcostFuelShip = costFuelShip - costFuelShipORG
     return costFuelShipORG, costFuelShip, dcostFuelShip
 
@@ -177,7 +177,7 @@ def costFuelAuxFunc(unitCostDF, fAuxORG, fAux):
 def costFuelAllFunc(costFuelShip, costFuelAux, dcostFuelShip, dcostFuelAux):
     costFuelAll = costFuelShip+costFuelAux
     dcostFuelAll = dcostFuelShip+dcostFuelAux
-    print('costFuelAll: ', costFuelAll, ', dcostFuelAll: ', dcostFuelAll, ', dcostFuelShip: ', dcostFuelShip, ', dcostFuelAux: ', dcostFuelAux)
+    #print('costFuelAll: ', costFuelAll, ', dcostFuelAll: ', dcostFuelAll, ', dcostFuelShip: ', dcostFuelShip, ', dcostFuelAux: ', dcostFuelAux)
     return costFuelAll, dcostFuelAll
 
 def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSPS, dcostCCS, flagWPS, flagSPS, flagCCS):
