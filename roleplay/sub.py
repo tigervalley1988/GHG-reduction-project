@@ -177,7 +177,7 @@ def costFuelAuxFunc(unitCostDF, fAuxORG, fAux):
 def costFuelAllFunc(costFuelShip, costFuelAux, dcostFuelShip, dcostFuelAux):
     costFuelAll = costFuelShip+costFuelAux
     dcostFuelAll = dcostFuelShip+dcostFuelAux
-    print('costFuelAll: ', costFuelAll, ', dcostFuelAll: ', dcostFuelAll)
+    print('costFuelAll: ', costFuelAll, ', dcostFuelAll: ', dcostFuelAll, ', dcostFuelShip: ', dcostFuelShip, ', dcostFuelAux: ', dcostFuelAux)
     return costFuelAll, dcostFuelAll
 
 def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSPS, dcostCCS, flagWPS, flagSPS, flagCCS):
