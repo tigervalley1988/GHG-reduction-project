@@ -523,7 +523,7 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
     ax[2,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax[2,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
 
-#    dcostShippingTildePlot = fleetAll['output']['dcostShippingTilde'][:elapsedYear+1]
+    dcostShippingTildePlot = fleetAll['output']['dcostShippingTilde'][:elapsedYear+1]
 #    ax[2,1].plot(fleetAll['year'][:elapsedYear+1],fleetAll['output']['dcostShippingTilde'][:elapsedYear+1])
 #    ax[2,1].set_title("$\Delta C_{shipping} \ / \ cta$")
 #    ax[2,1].set_xlabel('Year')
