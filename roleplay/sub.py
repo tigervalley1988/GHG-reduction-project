@@ -163,7 +163,7 @@ def ctaFunc(CAPcnt,rocc,d):
 def costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fShipORG, fShip):
     costFuelShipORG = unitCostFuelHFO*fShipORG
     costFuelShip = unitCostFuel*fShip
-    print('unitCostFuelHFO: ', unitCostFuelHFO, 'fShipORG: ', fShipORG, 'unitCostFuel: ', unitCostFuel, 'fShip: ', fShip, )
+    #print('unitCostFuelHFO: ', unitCostFuelHFO, 'fShipORG: ', fShipORG, 'unitCostFuel: ', unitCostFuel, 'fShip: ', fShip, )
     #print('costFuelShipOrg: ', costFuelShipORG, ', costFuelShip: ', costFuelShip)
     dcostFuelShip = costFuelShip - costFuelShipORG
     return costFuelShipORG, costFuelShip, dcostFuelShip
@@ -200,7 +200,7 @@ def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSP
 def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBasicHFO):
     if tOp <= tOpSch:
         dcostShipping = dcostFuelAll + (costShipAll-costShipBasicHFO)/tOpSch
-        #print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
+        print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
     else:
         dcostShipping = dcostFuelAll
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
