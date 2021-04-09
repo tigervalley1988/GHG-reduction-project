@@ -163,7 +163,7 @@ def ctaFunc(CAPcnt,rocc,d):
 def costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fShipORG, fShip):
     costFuelShipORG = unitCostFuelHFO*fShipORG
     costFuelShip = unitCostFuel*fShip
-    print('unitCostFuelHFO: ', unitCostFuelHFO, 'fShipORG: ', fShipORG, 'unitCostFuelHFO: ', unitCostFuel, 'fShipORG: ', fShip, )
+    print('unitCostFuelHFO: ', unitCostFuelHFO, 'fShipORG: ', fShipORG, 'unitCostFuel: ', unitCostFuel, 'fShip: ', fShip, )
     #print('costFuelShipOrg: ', costFuelShipORG, ', costFuelShip: ', costFuelShip)
     dcostFuelShip = costFuelShip - costFuelShipORG
     return costFuelShipORG, costFuelShip, dcostFuelShip
