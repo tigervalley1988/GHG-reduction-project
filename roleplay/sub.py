@@ -177,7 +177,7 @@ def costFuelAuxFunc(unitCostDF, fAuxORG, fAux):
 def costFuelAllFunc(costFuelShip, costFuelAux, dcostFuelShip, dcostFuelAux):
     costFuelAll = costFuelShip+costFuelAux
     dcostFuelAll = dcostFuelShip+dcostFuelAux
-    #print('costFuelAll: ', costFuelAll, ', dcostFuelAll: ', dcostFuelAll)
+    print('costFuelAll: ', costFuelAll, ', dcostFuelAll: ', dcostFuelAll)
     return costFuelAll, dcostFuelAll
 
 def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSPS, dcostCCS, flagWPS, flagSPS, flagCCS):
@@ -199,7 +199,7 @@ def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSP
 def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBasicHFO):
     if tOp <= tOpSch:
         dcostShipping = dcostFuelAll + (costShipAll-costShipBasicHFO)/tOpSch
-        print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
+        #print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
     else:
         dcostShipping = dcostFuelAll
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
