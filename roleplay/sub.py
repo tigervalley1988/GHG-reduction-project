@@ -541,4 +541,4 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
         np.savetxt(decisionListName+'_dcostShippingTilde.csv',dcostShippingTildePlot)
         np.savetxt(decisionListName+'_rocc.csv',roccPlot)
         np.savetxt(decisionListName+'_ctaPerRocc.csv',ctaPerRoccPlot)
-        np.savetxt(decisionListName+'_dcostShipping.csv',dcostShipping)
+        np.savetxt(decisionListName+'_dcostShipping.csv',dcostShippingPlot)
