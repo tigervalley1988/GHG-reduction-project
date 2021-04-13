@@ -197,13 +197,15 @@ def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSP
     #print('dcostWPS: ', dcostWPS, ', dcostSPS: ', dcostSPS, ', dcostCCS: ', dcostCCS)
     return costShipBasicHFO, costShipBasic, costShipAll
 
-def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBasicHFO):
+def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBasicHFO, currentYear, fuelName):
     if tOp <= tOpSch:
         dcostShipping = dcostFuelAll + (costShipAll-costShipBasicHFO)/tOpSch
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
+        print('1, year: ', currentYear, ', fuelName: ', fuelName, 'dCostShipping; ', dcostShipping)
     else:
         dcostShipping = dcostFuelAll
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
+        print('2, year: ', currentYear, ', fuelName: ', fuelName, 'dCostShipping; ', dcostShipping)
     return dcostShipping
 
 def demandScenarioFunc(year,kDem1,kDem2,kDem3,kDem4):
@@ -290,7 +292,7 @@ def yearlyOperationFunc(fleetAll,startYear,elapsedYear,NShipFleet,Alpha,tOpSch,v
             fleetAll[i]['costFuelAll'][tOpTemp], fleetAll[i]['dcostFuelAll'][tOpTemp] = costFuelAllFunc(fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['costFuelAux'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp], fleetAll[i]['dcostFuelAux'][tOpTemp])
             #print('costFuelAll: ', fleetAll[i]['costFuelAll'][tOpTemp], ', dcostFuelAll: ', fleetAll[i]['dcostFuelAll'][tOpTemp])
             fleetAll[i]['costShipBasicHFO'][tOpTemp], fleetAll[i]['costShipBasic'][tOpTemp], fleetAll[i]['costShipAll'][tOpTemp] = costShipFunc(valueDict["kShipBasic1"], fleetAll[i]["CAPcnt"], valueDict["kShipBasic2"], fleetAll[i]['rShipBasic'], valueDict["dcostWPS"], valueDict["dcostSPS"], valueDict["dcostCCS"], fleetAll[i]['WPS'], fleetAll[i]['SPS'], fleetAll[i]['CCS'])
-            fleetAll[i]['dcostShipping'][tOpTemp] = additionalShippingFeeFunc(tOpTemp, tOpSch, fleetAll[i]['dcostFuelAll'][tOpTemp], fleetAll[i]['costShipAll'][tOpTemp], fleetAll[i]['costShipBasicHFO'][tOpTemp])
+            fleetAll[i]['dcostShipping'][tOpTemp] = additionalShippingFeeFunc(tOpTemp, tOpSch, fleetAll[i]['dcostFuelAll'][tOpTemp], fleetAll[i]['costShipAll'][tOpTemp], fleetAll[i]['costShipBasicHFO'][tOpTemp], currentYear, fleetAll[i]['fuelName'])
             fleetAll[i]['gTilde'][tOpTemp] = fleetAll[i]['g'][tOpTemp] / fleetAll[i]['cta'][tOpTemp]
             fleetAll[i]['dcostShippingTilde'][tOpTemp] = fleetAll[i]['dcostShipping'][tOpTemp] / fleetAll[i]['cta'][tOpTemp]
             #fleetAll['output']['gTilde'][elapsedYear] += NShipFleet * fleetAll[i]['gTilde'][tOpTemp]
