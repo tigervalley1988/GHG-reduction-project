@@ -160,13 +160,13 @@ def ctaFunc(CAPcnt,rocc,d):
     cta = CAPcnt*rocc*d
     return cta
 
-#def costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fShipORG, fShip):
-def costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fShipORG, fShip, currentYear, fuelName):
+def costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fShipORG, fShip):
+#def costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fShipORG, fShip, currentYear, fuelName):
     costFuelShipORG = unitCostFuelHFO*fShipORG
     costFuelShip = unitCostFuel*fShip
     #print('unitCostFuelHFO: ', unitCostFuelHFO, 'fShipORG: ', fShipORG, 'unitCostFuel: ', unitCostFuel, 'fShip: ', fShip, )
     dcostFuelShip = costFuelShip - costFuelShipORG
-    print(currentYear, ', ', fuelName, ', uniCostFuelHFO: ', unitCostFuelHFO, ', uniCostFuelHFO: ', unitCostFuel, 'costFuelShipOrg: ', costFuelShipORG, ', costFuelShip: ', costFuelShip)
+    #print(currentYear, ', ', fuelName, ', uniCostFuelHFO: ', unitCostFuelHFO, ', uniCostFuelHFO: ', unitCostFuel, 'costFuelShipOrg: ', costFuelShipORG, ', costFuelShip: ', costFuelShip)
     return costFuelShipORG, costFuelShip, dcostFuelShip
 
 def costFuelAuxFunc(unitCostDF, fAuxORG, fAux):
@@ -207,7 +207,7 @@ def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBa
     else:
         dcostShipping = dcostFuelAll
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
-        print('2, year: ', currentYear, ', fuelName: ', fuelName, 'dCostShipping; ', dcostShipping)
+        #print('2, year: ', currentYear, ', fuelName: ', fuelName, 'dCostShipping; ', dcostShipping)
     return dcostShipping
 
 def demandScenarioFunc(year,kDem1,kDem2,kDem3,kDem4):
@@ -289,8 +289,9 @@ def yearlyOperationFunc(fleetAll,startYear,elapsedYear,NShipFleet,Alpha,tOpSch,v
             fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp] = fShipFunc(valueDict["kShip1"],valueDict["kShip2"],fleetAll[i]['wDWT'][tOpTemp],fleetAll[i]['wFLD'][tOpTemp],fleetAll[i]['rocc'][tOpTemp],valueDict["CNM2km"],fleetAll[i]['v'][tOpTemp],fleetAll[i]['d'][tOpTemp],valueDict["rWPS"],fleetAll[i]['WPS'],fleetAll[i]['CeqLHV'])
             fleetAll[i]['fAuxORG'][tOpTemp], fleetAll[i]['fAux'][tOpTemp] = fAuxFunc(valueDict["Dyear"],valueDict["Hday"],valueDict["Rrun"],valueDict["kAux1"],valueDict["kAux2"],fleetAll[i]['wDWT'][tOpTemp],valueDict["rSPS"],fleetAll[i]['SPS'])
             fleetAll[i]['gORG'][tOpTemp], fleetAll[i]['g'][tOpTemp] = gFunc(fleetAll[i]['Cco2'],fleetAll[i]['fShip'][tOpTemp],valueDict["Cco2DF"],fleetAll[i]['fAux'][tOpTemp],valueDict["rCCS"],fleetAll[i]['CCS'])     
-            #fleetAll[i]['costFuelShipORG'][tOpTemp], fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp] = costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp])
-            fleetAll[i]['costFuelShipORG'][tOpTemp], fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp] = costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp], currentYear, fleetAll[i]['fuelName'])
+            print(currentYear, ', ', fleetAll[i]['fuelName'], ', unitCostFuelHFO: ', unitCostFuelHFO, ', unitCostFuel: ', unitCostFuel)
+            fleetAll[i]['costFuelShipORG'][tOpTemp], fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp] = costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp])
+            #fleetAll[i]['costFuelShipORG'][tOpTemp], fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp] = costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp], currentYear, fleetAll[i]['fuelName'])
             fleetAll[i]['costFuelAuxORG'][tOpTemp], fleetAll[i]['costFuelAux'][tOpTemp], fleetAll[i]['dcostFuelAux'][tOpTemp] = costFuelAuxFunc(valueDict["unitCostDF"], fleetAll[i]['fAuxORG'][tOpTemp], fleetAll[i]['fAux'][tOpTemp])
             fleetAll[i]['costFuelAll'][tOpTemp], fleetAll[i]['dcostFuelAll'][tOpTemp] = costFuelAllFunc(fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['costFuelAux'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp], fleetAll[i]['dcostFuelAux'][tOpTemp])
             #print('costFuelAll: ', fleetAll[i]['costFuelAll'][tOpTemp], ', dcostFuelAll: ', fleetAll[i]['dcostFuelAll'][tOpTemp])
