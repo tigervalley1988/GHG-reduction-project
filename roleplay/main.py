@@ -44,7 +44,7 @@ def roleplayRun(decisionListName):
     fleets['output']['cta'] = np.zeros(lastYear-startYear+1)
     fleets['output']['rocc'] = np.zeros(lastYear-startYear+1)
     fleets['output']['dcostShipping'] = np.zeros(lastYear-startYear+1)
-    fleets['outputEach']['dcostShipping'] = np.zeros((lastYear-startYear+1,34))
+    #fleets['outputEach']['dcostShipping'] = np.zeros((lastYear-startYear+1,34))
     fleets['output']['ctaPerRocc'] = np.zeros(lastYear-startYear+1)
     fleets['output']['gTilde'] = np.zeros(lastYear-startYear+1)
     fleets['output']['dcostShippingTilde'] = np.zeros(lastYear-startYear+1)
