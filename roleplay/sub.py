@@ -201,7 +201,7 @@ def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBa
     if tOp <= tOpSch:
         dcostShipping = dcostFuelAll + (costShipAll-costShipBasicHFO)/tOpSch
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
-        print('1, year: ', currentYear, ', fuelName: ', fuelName, 'dCostShipping; ', dcostShipping)
+        print('1, year: ', currentYear, ', fuelName: ', fuelName, 'dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
     else:
         dcostShipping = dcostFuelAll
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
