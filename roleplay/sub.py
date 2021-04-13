@@ -200,7 +200,7 @@ def costShipFunc(kShipBasic1, CAPcnt, kShipBasic2, rShipBasic, dcostWPS, dcostSP
 def additionalShippingFeeFunc(tOp, tOpSch, dcostFuelAll, costShipAll, costShipBasicHFO):
     if tOp <= tOpSch:
         dcostShipping = dcostFuelAll + (costShipAll-costShipBasicHFO)/tOpSch
-        print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
+        #print('dcostFuelAll: ', dcostFuelAll, ', dcostShip: ', (costShipAll-costShipBasicHFO)/tOpSch, ', dcostShipping: ', dcostShipping)
     else:
         dcostShipping = dcostFuelAll
         #print('dcostFuelAll: ', dcostFuelAll, ', dcostShipping: ', dcostShipping)
@@ -300,6 +300,7 @@ def yearlyOperationFunc(fleetAll,startYear,elapsedYear,NShipFleet,Alpha,tOpSch,v
             #print('year: ', currentYear, ', i: ', i, ', rocc: ', fleetAll[i]['rocc'][tOpTemp], ', # of fleet: ', NumFleet)
             fleetAll['output']['ctaPerRocc'][elapsedYear] = ctaPerRocc
             fleetAll['output']['dcostShipping'][elapsedYear] += NShipFleet * fleetAll[i]['dcostShipping'][tOpTemp]
+            print('year: ', currentYear, ', fuel: ', fleetAll[i]['fuelName'], 'dCostShipping: ', fleetAll[i]['dcostFuelAll'][tOpTemp])
             fleetAll['output']['dcostShippingTilde'][elapsedYear] += NShipFleet * fleetAll[i]['dcostShippingTilde'][tOpTemp]
             numFleetAlive += 1
     
