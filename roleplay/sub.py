@@ -266,7 +266,7 @@ def yearlyOperationFunc(fleetAll,startYear,elapsedYear,NShipFleet,Alpha,tOpSch,v
     for i in range(1,NumFleet):
         if fleetAll[i]['delivery'] <= currentYear and fleetAll[i]['tOp'] < tOpSch:
             tOpTemp = fleetAll[i]['tOp']
-            unitCostFuel, unitCostFuelHFO = unitCostFuelFunc(parameterFile4,fleetAll[i]['fuelName'],currentYear)
+            #unitCostFuel, unitCostFuelHFO = unitCostFuelFunc(parameterFile4,fleetAll[i]['fuelName'],currentYear)
             #fleetAll[i]['v'][tOpTemp] = v[j].get() # tkinterによるInput用
             fleetAll[i]['v'][tOpTemp] = v
             fleetAll[i]['wDWT'][tOpTemp] = wDWTFunc(valueDict["kDWT1"],fleetAll[i]['CAPcnt'],valueDict["kDWT2"])
@@ -289,6 +289,7 @@ def yearlyOperationFunc(fleetAll,startYear,elapsedYear,NShipFleet,Alpha,tOpSch,v
             fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp] = fShipFunc(valueDict["kShip1"],valueDict["kShip2"],fleetAll[i]['wDWT'][tOpTemp],fleetAll[i]['wFLD'][tOpTemp],fleetAll[i]['rocc'][tOpTemp],valueDict["CNM2km"],fleetAll[i]['v'][tOpTemp],fleetAll[i]['d'][tOpTemp],valueDict["rWPS"],fleetAll[i]['WPS'],fleetAll[i]['CeqLHV'])
             fleetAll[i]['fAuxORG'][tOpTemp], fleetAll[i]['fAux'][tOpTemp] = fAuxFunc(valueDict["Dyear"],valueDict["Hday"],valueDict["Rrun"],valueDict["kAux1"],valueDict["kAux2"],fleetAll[i]['wDWT'][tOpTemp],valueDict["rSPS"],fleetAll[i]['SPS'])
             fleetAll[i]['gORG'][tOpTemp], fleetAll[i]['g'][tOpTemp] = gFunc(fleetAll[i]['Cco2'],fleetAll[i]['fShip'][tOpTemp],valueDict["Cco2DF"],fleetAll[i]['fAux'][tOpTemp],valueDict["rCCS"],fleetAll[i]['CCS'])     
+            unitCostFuel, unitCostFuelHFO = unitCostFuelFunc(parameterFile4,fleetAll[i]['fuelName'],currentYear)
             print(currentYear, ', ', fleetAll[i]['fuelName'], ', unitCostFuelHFO: ', unitCostFuelHFO, ', unitCostFuel: ', unitCostFuel)
             fleetAll[i]['costFuelShipORG'][tOpTemp], fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp] = costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp])
             #fleetAll[i]['costFuelShipORG'][tOpTemp], fleetAll[i]['costFuelShip'][tOpTemp], fleetAll[i]['dcostFuelShip'][tOpTemp] = costFuelShipFunc(unitCostFuelHFO, unitCostFuel, fleetAll[i]['fShipORG'][tOpTemp], fleetAll[i]['fShip'][tOpTemp], currentYear, fleetAll[i]['fuelName'])
