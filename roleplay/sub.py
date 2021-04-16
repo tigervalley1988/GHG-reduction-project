@@ -563,6 +563,8 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
 #    ax[2,1].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
 #    ax[2,1].ticklabel_format(style="sci",  axis="y",scilimits=(0,0))
     
+    costShipAllPlot = fleetAll['output']['costShipAll'][:elapsedYear+1]
+    costFuelAllPlot = fleetAll['output']['costFuelAll'][:elapsedYear+1]
     ctaPlot = fleetAll['output']['cta'][:elapsedYear+1]
     
     if os.name == 'nt':
@@ -576,6 +578,6 @@ def outputFunc(fleetAll,startYear,elapsedYear,lastYear,tOpSch,decisionListName):
         np.savetxt(decisionListName+'_cta.csv',ctaPlot)
         np.savetxt(decisionListName+'_rocc.csv',roccPlot)
         np.savetxt(decisionListName+'_ctaPerRocc.csv',ctaPerRoccPlot)
-        np.savetxt(decisionListName+'_costShipAll.csv',dcostShippingPlot)
-        np.savetxt(decisionListName+'_costFuelAll.csv',dcostShippingPlot)
+        np.savetxt(decisionListName+'_costShipAll.csv',costShipAllPlot)
+        np.savetxt(decisionListName+'_costFuelAll.csv',costFuelAllPlot)
         np.savetxt(decisionListName+'_dcostShipping.csv',dcostShippingPlot)
